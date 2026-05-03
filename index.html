@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Engineer Aspirants Nepal</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Segoe UI',sans-serif;color:#1a1a2e;background:#fff;}
+  a{text-decoration:none;}
+
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid #e8e8f0;background:#fff;position:sticky;top:0;z-index:100;}
+  .logo{font-size:1.2rem;font-weight:700;color:#1a1a2e;}
+  .logo span{color:#e05c1a;}
+  .nav-cta{background:#e05c1a;color:#fff;padding:0.55rem 1.3rem;border-radius:6px;font-size:0.9rem;font-weight:600;transition:background 0.2s;}
+  .nav-cta:hover{background:#c44d12;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);color:#fff;padding:5rem 2.5rem 4.5rem;text-align:center;}
+  .badge{display:inline-block;background:rgba(224,92,26,0.2);color:#f4956a;border:1px solid rgba(224,92,26,0.4);padding:0.3rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem;text-transform:uppercase;}
+  .hero h1{font-size:2.8rem;font-weight:800;line-height:1.2;max-width:700px;margin:0 auto 1.2rem;}
+  .hero h1 span{color:#f4956a;}
+  .hero p{font-size:1.1rem;color:#a8b4c8;max-width:560px;margin:0 auto 2.2rem;line-height:1.7;}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:#e05c1a;color:#fff;padding:0.85rem 2rem;border-radius:8px;font-size:1rem;font-weight:700;transition:background 0.2s,transform 0.1s;}
+  .btn-primary:hover{background:#c44d12;transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:#fff;padding:0.85rem 2rem;border-radius:8px;font-size:1rem;font-weight:600;border:1.5px solid rgba(255,255,255,0.35);transition:border-color 0.2s;}
+  .btn-outline:hover{border-color:#fff;}
+  .hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3.5rem;flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat .num{font-size:1.8rem;font-weight:800;color:#f4956a;}
+  .stat .lbl{font-size:0.8rem;color:#8898aa;text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem;}
+
+  /* PROBLEM */
+  .section{padding:4rem 2.5rem;max-width:1000px;margin:0 auto;}
+  .section-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#e05c1a;margin-bottom:0.6rem;}
+  .section h2{font-size:2rem;font-weight:800;color:#1a1a2e;margin-bottom:1rem;line-height:1.3;}
+  .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;}
+  .problem-card{background:#fff7f4;border:1px solid #fddcc8;border-radius:10px;padding:1.2rem;display:flex;align-items:flex-start;gap:0.8rem;}
+  .problem-icon{font-size:1.4rem;flex-shrink:0;}
+  .problem-card p{font-size:0.92rem;color:#5a3a2a;line-height:1.5;font-weight:500;}
+
+  /* SOLUTION */
+  .solution-bg{background:#f7f8fc;padding:4rem 2.5rem;}
+  .solution-inner{max-width:1000px;margin:0 auto;}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:2.5rem;}
+  .feature-card{background:#fff;border:1px solid #e4e6f0;border-radius:12px;padding:1.5rem;transition:box-shadow 0.2s,transform 0.2s;}
+  .feature-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.08);transform:translateY(-2px);}
+  .feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
+  .icon-orange{background:#fff0e8;}
+  .icon-blue{background:#e8f0ff;}
+  .icon-green{background:#e8f9ee;}
+  .icon-purple{background:#f0e8ff;}
+  .feature-card h3{font-size:1rem;font-weight:700;color:#1a1a2e;margin-bottom:0.5rem;}
+  .feature-card p{font-size:0.88rem;color:#5a6380;line-height:1.6;}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:4rem 2.5rem;max-width:1000px;margin:0 auto;}
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem;}
+  .testi-card{background:#fff;border:1px solid #e4e6f0;border-radius:12px;padding:1.5rem;}
+  .stars{color:#f59e0b;font-size:0.9rem;margin-bottom:0.8rem;letter-spacing:2px;}
+  .testi-card p{font-size:0.92rem;color:#3a4060;line-height:1.6;font-style:italic;margin-bottom:1rem;}
+  .testi-author{display:flex;align-items:center;gap:0.7rem;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:#f0e8ff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#7c3aed;}
+  .avatar.green{background:#e8f9ee;color:#059669;}
+  .author-info .name{font-size:0.88rem;font-weight:700;color:#1a1a2e;}
+  .author-info .role{font-size:0.78rem;color:#8898aa;}
+
+  /* CTA */
+  .cta-section{background:linear-gradient(135deg,#e05c1a,#c44d12);padding:4.5rem 2.5rem;text-align:center;color:#fff;}
+  .cta-section h2{font-size:2.2rem;font-weight:800;margin-bottom:1rem;}
+  .cta-section p{font-size:1.05rem;color:rgba(255,255,255,0.85);max-width:500px;margin:0 auto 2rem;}
+  .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .btn-white{background:#fff;color:#e05c1a;padding:0.9rem 2.2rem;border-radius:8px;font-size:1rem;font-weight:700;transition:transform 0.1s;}
+  .btn-white:hover{transform:translateY(-1px);}
+  .btn-ghost{background:transparent;color:#fff;padding:0.9rem 2.2rem;border-radius:8px;font-size:1rem;font-weight:600;border:1.5px solid rgba(255,255,255,0.5);}
+  .cta-note{margin-top:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.7);}
+
+  /* FOOTER */
+  footer{background:#1a1a2e;color:#8898aa;text-align:center;padding:2rem;font-size:0.85rem;}
+  footer span{color:#f4956a;}
+
+  /* CONTACT FORM */
+  .contact-section{padding:4rem 2.5rem;max-width:680px;margin:0 auto;}
+  .contact-section h2{font-size:2rem;font-weight:800;color:#1a1a2e;margin-bottom:0.5rem;}
+  .contact-section p{color:#5a6380;font-size:1rem;margin-bottom:2rem;line-height:1.7;}
+  .form-group{margin-bottom:1.2rem;}
+  .form-group label{display:block;font-size:0.88rem;font-weight:600;color:#1a1a2e;margin-bottom:0.4rem;}
+  .form-group input,.form-group textarea,.form-group select{width:100%;padding:0.75rem 1rem;border:1.5px solid #d8dae8;border-radius:8px;font-size:0.95rem;color:#1a1a2e;font-family:inherit;outline:none;transition:border-color 0.2s;}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#e05c1a;}
+  .form-group textarea{resize:vertical;min-height:110px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .submit-btn{width:100%;background:#e05c1a;color:#fff;padding:0.9rem;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+  .submit-btn:hover{background:#c44d12;}
+  .success-msg{display:none;background:#e8f9ee;border:1px solid #6ee7a0;border-radius:8px;padding:1rem;color:#065f46;font-size:0.95rem;text-align:center;margin-top:1rem;}
+
+  /* WHATSAPP BUTTON */
+  .wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:999;transition:transform 0.2s;}
+  .wa-btn:hover{transform:scale(1.1);}
+  .wa-btn svg{width:30px;height:30px;fill:#fff;}
+  .wa-tooltip{position:fixed;bottom:5.2rem;right:1.8rem;background:#1a1a2e;color:#fff;font-size:0.8rem;padding:0.4rem 0.8rem;border-radius:6px;white-space:nowrap;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+  .wa-btn:hover + .wa-tooltip{opacity:1;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Engineer<span>Aspirants</span> Nepal</div>
+  <a href="#cta" class="nav-cta">Get Started Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">For Backlog Civil Engineering Students</div>
+  <h1>Don't Let Backlogs<br><span>Define Your Future.</span></h1>
+  <p>Nepal's first coaching platform built specifically for civil engineering students with backlogs. Clear your papers, build your confidence, and graduate on your own terms.</p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn-primary">Start Free — 7 Days</a>
+    <a href="#features" class="btn-outline">See How It Works</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">500+</div><div class="lbl">Students Helped</div></div>
+    <div class="stat"><div class="num">92%</div><div class="lbl">Backlog Clear Rate</div></div>
+    <div class="stat"><div class="num">15+</div><div class="lbl">Civil Subjects</div></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<div class="section">
+  <p class="section-label">The Problem</p>
+  <h2>Sound familiar?</h2>
+  <p style="color:#5a6380;font-size:1rem;line-height:1.7;max-width:680px;">Civil engineering is one of Nepal's toughest programs. Backlogs don't mean you're not smart — they mean you didn't get the right support at the right time.</p>
+  <div class="problem-grid">
+    <div class="problem-card"><div class="problem-icon">📚</div><p>Confusing textbooks with no one to explain them simply</p></div>
+    <div class="problem-card"><div class="problem-icon">😔</div><p>Watching your batchmates graduate while you retake papers</p></div>
+    <div class="problem-card"><div class="problem-icon">🌙</div><p>Cramming alone at midnight with no guidance</p></div>
+    <div class="problem-card"><div class="problem-icon">📉</div><p>No practice tests that match your actual exam pattern</p></div>
+  </div>
+</div>
+
+<!-- SOLUTION -->
+<div class="solution-bg" id="features">
+  <div class="solution-inner">
+    <p class="section-label">The Solution</p>
+    <h2>Everything you need to clear your backlogs</h2>
+    <p style="color:#5a6380;font-size:1rem;line-height:1.7;max-width:680px;">We built Engineer Aspirants Nepal specifically for students in your situation. No fluff — just focused tools and support that work.</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon icon-orange">📝</div>
+        <h3>Targeted Assignments</h3>
+        <p>Subject-by-subject assignments matched to your exact backlog papers. Practice only what actually shows up in your exam.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-blue">📊</div>
+        <h3>Mock Tests</h3>
+        <p>Real exam-style mock tests for each backlog subject. Track scores, spot weak areas, and walk in prepared — not surprised.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-green">🤝</div>
+        <h3>Personal Mentoring</h3>
+        <p>Stuck at 11 PM before your exam? Our mentors and student community are here. You're never studying alone again.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-purple">📖</div>
+        <h3>Simplified Notes</h3>
+        <p>Complex civil engineering topics explained in clear Nepali and English — the way they should have been taught in class.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+  <p class="section-label">Student Stories</p>
+  <h2>They cleared their backlogs. So can you.</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I had 4 backlogs and thought I'd never graduate. This platform helped me clear all of them in one semester. The mock tests were exactly what I needed."</p>
+      <div class="testi-author">
+        <div class="avatar">BT</div>
+        <div class="author-info"><div class="name">Bikash Thapa</div><div class="role">Civil Engineering, Pokhara</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Strength of Materials was my nightmare subject. The simplified notes and assignments made it finally click. Passed it second attempt without any stress."</p>
+      <div class="testi-author">
+        <div class="avatar green">SM</div>
+        <div class="author-info"><div class="name">Sita Maharjan</div><div class="role">IOE Student, Kathmandu</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The mentors answered every doubt I had, no matter how basic. I finally stopped feeling embarrassed about asking questions."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#e8f0ff;color:#1d4ed8;">RK</div>
+        <div class="author-info"><div class="name">Rajan Khatri</div><div class="role">Civil Engineering, Chitwan</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" id="cta">
+  <h2>Ready to Clear Your Backlogs — For Good?</h2>
+  <p>Stop studying harder. Start studying smarter. Your first 7 days are completely free.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-white">Start Free Trial</a>
+    <a href="https://wa.me/9779845448620" class="btn-ghost">WhatsApp Us</a>
+  </div>
+  <div class="cta-note">No payment required. Available online across Nepal.</div>
+</div>
+
+<!-- CONTACT FORM -->
+<div class="contact-section">
+  <p class="section-label">Contact Us</p>
+  <h2>Get in Touch</h2>
+  <p>Have questions? Fill out the form below and we'll get back to you within 24 hours — or WhatsApp us for a faster reply.</p>
+  <div class="form-row">
+    <div class="form-group"><label>Full Name</label><input type="text" placeholder="Bikash Thapa"/></div>
+    <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+977-98XXXXXXXX"/></div>
+  </div>
+  <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+  <div class="form-group">
+    <label>Which subject is your backlog?</label>
+    <select>
+      <option value="">-- Select Subject --</option>
+      <option>Strength of Materials</option>
+      <option>Fluid Mechanics</option>
+      <option>Structural Analysis</option>
+      <option>Geotechnical Engineering</option>
+      <option>Engineering Mathematics</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us about your situation — we're here to help."></textarea></div>
+  <button class="submit-btn" onclick="submitForm()">Send Message</button>
+  <div class="success-msg" id="successMsg">Thank you! We'll reach out to you soon. You can also WhatsApp us directly for a faster reply.</div>
+</div>
+
+<!-- FOOTER -->
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/9779845448620?text=Hello%2C%20I%20have%20a%20backlog%20and%20need%20help!" class="wa-btn" target="_blank">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 1C7.73 1 1 7.73 1 16c0 2.65.69 5.14 1.9 7.3L1 31l7.9-1.87A15 15 0 0 0 16 31c8.27 0 15-6.73 15-15S24.27 1 16 1zm7.1 21.1c-.3.85-1.76 1.63-2.4 1.7-.62.07-1.2.3-4.05-.85-3.4-1.38-5.58-4.85-5.75-5.08-.17-.22-1.38-1.83-1.38-3.5s.87-2.48 1.18-2.82c.3-.34.66-.42.88-.42l.63.01c.2 0 .48-.08.75.57.3.69 1 2.48 1.09 2.66.09.18.15.4.03.63-.12.23-.18.37-.36.57-.18.2-.37.44-.53.6-.18.17-.37.36-.16.7.21.35.95 1.56 2.03 2.52 1.4 1.24 2.57 1.63 2.93 1.81.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1 1 2.46 1.18.36.18.6.27.69.42.09.16.09.93-.21 1.78z"/></svg>
+</a>
+<div class="wa-tooltip">Chat with us on WhatsApp</div>
+
+<footer>
+  <p>&copy; 2024 <span>Engineer Aspirants Nepal</span>. Built for backlog students, by people who've been there.</p>
+</footer>
+
+</body>
+</html>
